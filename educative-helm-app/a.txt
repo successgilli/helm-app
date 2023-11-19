@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kanban-app
+  labels:
+    app: kanban-app
+    group: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kanban-app
+  template:
+    metadata:
+      labels:
+        app: kanban-app
+        group: backend
+    spec:
+      containers:
+        - name: kanban-app
+          image: wkrzywiec/kanban-app:helm-course
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_SERVER
+              value: postgres
+            - name: POSTGRES_DB
+              value: kanban
+            - name: POSTGRES_USER
+              value: kanban
+            - name: POSTGRES_PASSWORD
+              value: kanban
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kanban-app
+  labels: 
+    group: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: kanban-app
+  ports:
+    - port: 8080
+      targetPort: 8080

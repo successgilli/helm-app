@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  educative-helm-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-11-19T13:48:18.471715+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 4468f83198dfc0a88562da69a44599f28e0575ad475f056fcb694f7ad3a0f213
+    name: educative-helm-app
+    type: application
+    urls:
+    - https://successgilli.github.io/helm-app/educative-helm-app-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-11-19T13:48:18.4711+01:00"

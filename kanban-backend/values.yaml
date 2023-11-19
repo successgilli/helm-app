@@ -1,0 +1,31 @@
+name: kanban-backend
+group: backend
+replicaCount: 1
+container:
+  image: wkrzywiec/kanban-app:helm-course
+  port: 8080
+  env: 
+    - key: DB_SERVER
+      value: postgres
+    - key: POSTGRES_DB
+      value: kanban
+    - key: POSTGRES_USER
+      value: kanban
+    - key: POSTGRES_PASSWORD
+      value: kanban
+database:
+  enabled: true
+
+postgresql:
+  fullnameOverride: "postgres"
+  image:
+    tag: 11.14.0-debian-10-r17
+  auth:
+    postgresPassword: "postgres"
+    username: "kanban"
+    password: "kanban"
+    database: "kanban"
+
+service:
+    type: ClusterIP
+    port: 8080
